@@ -1,0 +1,26 @@
+Since our resources are limited, we have to select the best candidates
+The following tasks are optional, still we encourage You to complete them to demonstrate Your skills
+
+Please provide Your solution for the following challenges in Your preferred programming language, 
+and submit a short (max. 1 page) documentation for the dependencies and usage.
+
+Please note, that there are no bad solutions, and the assignments will not only be evaluated by their performance
+Submit Your solution to (GitHub repo link is preferred):
+botos.csaba@hu.verizon.com
+
+Three wise monkeys
+The Mouth
+
+Write an application that can produce "contemporary" lyrics or poems in any preferred style.
+The less repetitive and more hilarious outputs are the main goal.
+
+The Ear
+Write an application that can differentiate human voice between the following aspects:
+
+High VS Low voice
+Talking VS Whispering
+
+The Eye
+Write an application that can differentiate between two hand written digits
+Note: you can (should) use the MNIST database for developing your application
+
