@@ -4,6 +4,15 @@ import sys, argparse
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 
+'''
+Firstly I have started to solve the problem with openCV, since
+I had no clue about the furthermore steps, I have decided to give 
+a try to the tensorflow module.
+It has turned out learning on the MNIST database is the 'Hello World'
+of deeplearning, and there are many tutorials. I have tried to 
+follow one, and to understand what is exactly going on here.
+'''
+
 def main(_):
 	dataset = input_data.read_data_sets("MNIST_data/",one_hot=True)
 	
