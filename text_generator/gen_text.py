@@ -1,8 +1,19 @@
 #!/usr/bin/python
 
+'''
+The ide came from the Google Keyboard on Android phones. As you write 
+the keyboard suggest you words according to the last word you have 
+written, and what you usually write after it. Naturally, the Google
+Keyboard is more sophisticated than that.
+'''
+
 from random import randint
 
 def getWords(files):
+
+#Gets all words from the hunger games triology
+#i'm not a big fan, but it was easy to find it online
+
 	words = []
 	for f in files:
 		with open(f, 'r') as fi:
@@ -19,14 +30,17 @@ def getWords(files):
 	return words
 
 def findNextWord( lastWord, words):
+#Here the program lists all words as many times as it followed
+#the last word. In the end returning with it
+
 	foundWords = []
 	if lastWord[-1] in ['.','?','!']:
 		for i, word in enumerate(words[-1]):
-			if lastWord[-1] in ['.','?','!']:
+			if word[-1] in ['.','?','!']:
 				foundWords.append( words[ i+1])
 	elif lastWord.endswith(','):
 		for i, word in enumerate(words[:-1]):
-			if lastWord.endswith('.'):
+			if word.endswith(','):
 				foundWords.append( words[ i+1])
 	else:
 		for i, word in enumerate(words[:-1]):
@@ -45,10 +59,11 @@ def isEnough( text, wantedSize):
 
 if __name__ == '__main__':
 	words = getWords( [ 'hg1.txt', 'hg2.txt', 'hg3_1.txt', 'hg3_2.txt'] )
-	print len(words)
 	
-	lastWord = 'He' #str( raw_input('First word of the generated text: '))
-	wantedSize = 500 #int( raw_input('Wanted size of the text :'))
+        lastWord = ''
+        while not lastWord in words:
+	    lastWord = str( raw_input('First word of the generated text: '))
+	wantedSize = int( raw_input('Wanted size of the text :'))
 	text = lastWord 
 	needMore = True
 
@@ -58,7 +73,7 @@ if __name__ == '__main__':
 		lastWord = nextWord[:]
 
 		if text[-1] in ['.','?','!']:
-			needMore = isEnough( text, 500)
+			needMore = isEnough( text, wantedSize)
 	print "-------------------------------------------------------------------------------------"
 	print text
 	print "-------------------------------------------------------------------------------------"
