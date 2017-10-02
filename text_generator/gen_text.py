@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import sys
 
 '''
 The ide came from the Google Keyboard on Android phones. As you write 
@@ -35,7 +36,7 @@ def findNextWord( lastWord, words):
 
 	foundWords = []
 	if lastWord[-1] in ['.','?','!']:
-		for i, word in enumerate(words[-1]):
+                for i, word in enumerate(words[:-1]):
 			if word[-1] in ['.','?','!']:
 				foundWords.append( words[ i+1])
 	elif lastWord.endswith(','):
@@ -56,14 +57,13 @@ def isEnough( text, wantedSize):
 		return False
 	return True
 
-
-if __name__ == '__main__':
+def main():
 	words = getWords( [ 'hg1.txt', 'hg2.txt', 'hg3_1.txt', 'hg3_2.txt'] )
 	
         lastWord = ''
         while not lastWord in words:
 	    lastWord = str( raw_input('First word of the generated text: '))
-	wantedSize = int( raw_input('Wanted size of the text :'))
+	wantedSize = int( raw_input('Wanted size of the text (integer):'))
 	text = lastWord 
 	needMore = True
 
@@ -77,3 +77,6 @@ if __name__ == '__main__':
 	print "-------------------------------------------------------------------------------------"
 	print text
 	print "-------------------------------------------------------------------------------------"
+
+if __name__ == '__main__':
+        main()
