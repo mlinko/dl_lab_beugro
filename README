@@ -1,0 +1,4 @@
+The mnist/ dir includes a solvage with tensorflow.
+The handwriting/ dir includes a script, where I tried to solve the problem by a custom one layer neural network.
+The sound/ dir includes a script, in which a voice classifier can be found. (not solved with neural network)
+The text_generator/ dir includes a script that can generate some text.
