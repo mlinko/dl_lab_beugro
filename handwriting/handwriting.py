@@ -30,7 +30,7 @@ class Perceptron:
 		self.W = np.random.rand(inputSize)
 		self.bias = randint(1,255)
 		self.x0 = -1
-		self.nu = 3
+		self.nu = 1
 
 	def fromState(self, state):
 		self.number = state['number']
@@ -47,9 +47,13 @@ class Perceptron:
 	
 	def learn(self, inputVector, wantedResult):
 		givenResult = self.sgn(inputVector)
-		error = wantedResult - givenResult
-		self.W = self.W + self.nu * error * inputVector
-		self.bias = self.bias + self.nu * error * self.x0
+		if not givenResult == wantedResult:
+			if wantedResult:
+				error = 2
+			else:
+				error = -2
+			self.W = self.W + self.nu * error * inputVector
+			self.bias = self.bias + self.nu * error * self.x0
 	
 	def getState(self):
 		state = {}
@@ -134,8 +138,8 @@ def readInDataset(forTrain=True):
 if __name__ == '__main__':
 	images, labels, vectorSize = readInDataset()
 	network = Network()
-	#network.fromScratch(4, vectorSize)
-	network.fromJson(JSONFILE)
-	network.training(images, labels, 200)
+	network.fromScratch(4, vectorSize)
+	#network.fromJson(JSONFILE)
+	network.training(images, labels, 1)
 	images, labels = readInDataset(forTrain=False)
 	network.testing(images, labels)
